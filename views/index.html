@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+  <div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Restaurants:</button>
+    <div class="dropdown-menu">
+      {% for restaurant in restaurants %}
+      <a class="dropdown-item" href="#">{{ restaurant.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Hotels:</button>
+    <div class="dropdown-menu">
+      {% for hotel in hotels %}
+        <a class="dropdown-item" href="#">{{ hotel.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn btn-primary dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Activities:</button>
+    <div class="dropdown-menu">
+      {% for activity in activities %}
+        <a class="dropdown-item" href="#">{{ activity.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock %}

@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const db = require('./db').db;
+const db = require('./models').db;
 const routes = require('./routes');
 
 const app = express();
@@ -22,7 +22,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(routes);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(function(err, req, res, next){
+  res.status(err.status || 500);
+  res.render('error', { error: err })
+})
+
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/stylesheets'));
 
 db.sync()
 .then(function () {
@@ -30,4 +36,5 @@ db.sync()
     console.log('Listening on port 3000');
   });
 })
+
 .catch(console.error);
