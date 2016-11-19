@@ -28,7 +28,10 @@ app.use(function(err, req, res, next){
 })
 
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/public/stylesheets'));
+
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 
 db.sync()
 .then(function () {
